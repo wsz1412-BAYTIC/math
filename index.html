@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الرياضيات - الصف الرابع الابتدائي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root{--p:#1a5276;--s:#27ae60;--d:#c0392b;--w:#e67e22;--bg:#e8f0f8}
+        *{box-sizing:border-box;font-family:'Tajawal',sans-serif;margin:0;padding:0}
+        body{background:var(--bg);padding:10px;display:flex;justify-content:center;align-items:center;min-height:100vh;direction:rtl}
+        .qc{width:100%;max-width:800px;background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,0.1);padding:25px 20px;position:relative}
+        .sc,.rs{text-align:center;padding:25px 15px}
+        .ah{text-align:center;margin-bottom:18px}
+        .gb{display:inline-block;background:var(--p);color:#fff;padding:5px 14px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:6px}
+        .at{font-family:'Cairo',sans-serif;font-size:28px;font-weight:900;color:var(--p)}
+        .as{font-size:14px;color:#7f8c8d}
+        .nsec{background:#f0f4f8;border-radius:12px;padding:15px;margin:15px 0;text-align:right}
+        .nsec label{display:block;font-weight:700;color:var(--p);margin-bottom:6px;font-size:15px}
+        .ni{width:100%;padding:10px 14px;border:2px solid #d5dbdb;border-radius:10px;font-size:16px;font-weight:700;text-align:right;transition:all 0.3s}
+        .ni:focus{outline:none;border-color:#2980b9}
+        .ne{color:var(--d);font-size:13px;margin-top:4px;display:none;font-weight:700}
+        .btn{background:#2980b9;color:#fff;border:none;padding:12px 30px;font-size:18px;font-weight:700;border-radius:50px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 15px rgba(41,128,185,0.3);display:inline-block;margin:4px}
+        .btn:hover{background:var(--p);transform:translateY(-2px)}
+        .bto{background:transparent;border:2px solid #2980b9;color:#2980b9;box-shadow:none}
+        .bto:hover{background:#2980b9;color:#fff}
+        .bs{padding:8px 18px;font-size:15px}
+        .pbc{width:100%;height:8px;background:#e0e6ed;border-radius:4px;margin-bottom:15px;overflow:hidden}
+        .pb{height:100%;width:0%;background:#2980b9;transition:width 0.5s;border-radius:4px}
+        .qh{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:14px;font-weight:700;color:#555;flex-wrap:wrap;gap:6px;background:#f7f9fc;padding:10px 14px;border-radius:12px}
+        .tc{display:flex;align-items:center;gap:4px;background:#eaf7ea;padding:5px 10px;border-radius:16px;color:var(--s);font-weight:700;transition:all 0.3s}
+        .tw{background:#fef9e7!important;color:var(--w)!important}
+        .td{background:#fdedec!important;color:var(--d)!important;animation:blink 0.5s infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.6}}
+        .lv{display:flex;gap:2px;font-size:16px}
+        .lv .h{color:#e74c3c;transition:all 0.3s}
+        .lv .hl{color:#ccc;transform:scale(0.7)}
+        .sd{color:#f39c12;font-weight:800}
+        .qb{background:#f8fafc;border-right:4px solid #2980b9;padding:18px 16px;border-radius:12px;margin-bottom:15px}
+        .qtl{display:inline-block;background:#e8f0fe;color:var(--p);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;margin-bottom:6px}
+        .qt{font-size:19px;color:#1a1a2e;font-weight:800;line-height:1.7}
+        .va{display:flex;justify-content:center;align-items:center;margin:10px 0 5px;min-height:40px}
+        .me{font-family:'Cairo',sans-serif;font-size:22px;font-weight:900;color:var(--p);text-align:center;padding:8px 14px;background:#eaf2f8;border-radius:8px;display:inline-block;direction:ltr}
+        .og{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+        @media(max-width:600px){.og{grid-template-columns:1fr}.qh{flex-direction:column;align-items:stretch;text-align:center}.at{font-size:22px}.qt{font-size:17px}.qc{padding:14px 10px}}
+        .oc{background:#fff;border:2px solid #d5dbdb;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:all 0.2s;font-size:16px;font-weight:700;color:#1a1a2e}
+        .oc:hover{border-color:#2980b9;background:#f0f6fc;transform:translateY(-1px)}
+        .ol{width:28px;height:28px;border-radius:50%;background:#e8f0f8;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:var(--p);flex-shrink:0}
+        .oc.cr{background:#eafaf1!important;border-color:var(--s)!important;color:#1e8449!important}
+        .oc.cr .ol{background:var(--s);color:#fff}
+        .oc.wr{background:#fdedec!important;border-color:var(--d)!important;color:#922b21!important}
+        .oc.wr .ol{background:var(--d);color:#fff}
+        .fb{margin-top:14px;padding:10px 14px;border-radius:8px;display:none;font-size:14px;font-weight:700;line-height:1.6}
+        .fb.cr{background:#eafaf1;color:#1e8449;border-right:3px solid var(--s)}
+        .fb.wr{background:#fdedec;color:#922b21;border-right:3px solid var(--d)}
+        .fb.in{background:#eaf2f8;color:var(--p);border-right:3px solid #2980b9}
+        .ab{display:flex;gap:6px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+        .fs{font-size:70px;font-weight:900;font-family:'Cairo',sans-serif;color:var(--p);margin:10px 0}
+        .rg{font-size:20px;font-weight:800;margin:6px 0}
+        .ge{color:var(--s)}.gg{color:#2980b9}.gf{color:var(--w)}.gn{color:var(--d)}
+        .atg{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin:10px 0}
+        .tg{padding:4px 10px;border-radius:14px;font-size:11px;font-weight:700}
+        .tp{background:#d4efdf;color:#1e8449}.tgr{background:#d6eaf8;color:var(--p)}.tgd{background:#fef9e7;color:#7d6608}.tco{background:#fdebd0;color:#935116}
+        .hb{background:#f8fafc;border-radius:10px;padding:14px;margin:14px 0;text-align:right;border:1px solid #e0e6ed}
+        .hb h4{color:var(--p);margin-bottom:6px;font-size:14px}
+        .hr{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #eee;font-size:12px;color:#555;gap:6px;flex-wrap:wrap}
+        .hr:last-child{border-bottom:none}
+        .bsh{color:#f39c12;font-weight:800}
+        .tip{background:#fef9e7;border-right:3px solid #f39c12;padding:10px 12px;border-radius:8px;margin:10px 0;font-size:13px;color:#7d6608;text-align:right;line-height:1.6}
+        .wa{background:#eaf2f8;border-right:3px solid #2980b9;padding:10px 12px;border-radius:8px;margin:10px 0;font-size:13px;color:var(--p);text-align:right;line-height:1.6}
+        .cb{background:none;border:1px solid #ccc;color:#777;padding:3px 8px;border-radius:12px;cursor:pointer;font-size:10px;margin-top:4px}
+        .cb:hover{border-color:var(--d);color:var(--d)}
+        .snd{background:#e8f0fe;color:var(--p);padding:3px 8px;border-radius:12px;font-size:12px;font-weight:700}
+    </style>
+</head>
+<body>
+<div class="qc">
+    <div id="ss" class="sc">
+        <div class="ah"><div class="gb">الصف الرابع الابتدائي - الفصل الثاني</div><h1 class="at">اختبار الرياضيات التفاعلي</h1><p class="as">القسمة | الهندسة | القياس | الكسور | الإحصاء</p></div>
+        <div class="nsec"><label>أدخل اسمك:</label><input type="text" id="ni" class="ni" placeholder="اكتب اسمك هنا..." maxlength="30" autocomplete="off"><div class="ne" id="ne">الرجاء كتابة اسمك أولاً</div></div>
+        <div class="hb" id="hb" style="display:none;"><h4>سجل المحاولات</h4><div id="hc"></div><button class="cb" onclick="clH()">مسح السجل</button></div>
+        <div id="wm" style="margin:10px 0;font-size:14px;color:#555;"></div>
+        <div style="background:#f0f4f8;padding:14px;border-radius:10px;margin:14px 0;text-align:right;">
+            <p style="font-weight:700;color:var(--p);margin-bottom:4px;">معلومات الاختبار:</p>
+            <ul style="list-style:none;padding:0;font-size:13px;color:#555;line-height:1.8;">
+                <li>- 15 سؤالاً عشوائياً | 30 ثانية لكل سؤال</li>
+                <li>- 3 محاولات (قلوب) | تخطي سؤال واحد فقط</li>
+            </ul>
+        </div>
+        <button class="btn" onclick="vS()">ابدأ الاختبار</button>
+    </div>
+    <div id="qs" style="display:none;">
+        <div class="pbc"><div id="pb" class="pb"></div></div>
+        <div class="qh">
+            <span id="qn">السؤال 1 من 15</span><span class="snd" id="snd"></span>
+            <div class="lv" id="lv"><span class="h">&#10084;</span><span class="h">&#10084;</span><span class="h">&#10084;</span></div>
+            <div class="tc" id="tc"><span>&#9202;</span> <span id="td">30</span></div>
+            <span class="sd">&#9733; <span id="sv">0</span></span>
+        </div>
+        <div class="qb"><div id="qtl" class="qtl"></div><div id="qt" class="qt"></div><div id="va" class="va"></div></div>
+        <div id="og" class="og"></div>
+        <div id="fb" class="fb"></div>
+        <div class="ab">
+            <button id="skb" class="btn bto bs" onclick="skQ()">تخطي <span id="skl">(1)</span></button>
+            <button id="nb" class="btn bs" style="display:none;" onclick="nQ()">التالي</button>
+        </div>
+    </div>
+    <div id="rs" class="rs" style="display:none;">
+        <div class="ah"><h2 style="font-family:'Cairo',sans-serif;color:var(--p);">انتهى الاختبار</h2><p id="rn" style="font-size:16px;color:#555;"></p></div>
+        <div class="fs" id="fs">0%</div>
+        <div class="rg" id="rg"></div>
+        <div class="atg" id="atg"></div>
+        <p id="rm" style="font-size:16px;color:#555;margin:8px 0;line-height:1.7;"></p>
+        <div class="tip" id="tb" style="display:none;"></div>
+        <div class="wa" id="wb" style="display:none;"></div>
+        <div id="bi" style="margin:8px 0;font-size:14px;color:#555;"></div>
+        <div style="margin-top:12px;"><button class="btn" onclick="sQz()">محاولة جديدة</button><button class="btn bto" onclick="gHm()" style="margin-right:6px;">الرئيسية</button></div>
+    </div>
+</div>
+<script>
+const QB=[
+{q:"قدر ناتج القسمة: 141 ÷ 4",op:["20","30","40","50"],c:2,cat:"div",t:"تقدير ناتج القسمة",v:"exp",vd:"141 ≈ 160، 160 ÷ 4 = ?",f:"141 قريبة من 160، و160÷4=40"},
+{q:"يسمى العدد المتبقي بعد القسمة:",op:["ناتج القسمة","الباقي","المقسوم","المقسوم عليه"],c:1,cat:"div",t:"مصطلحات القسمة",v:"exp",vd:"17÷5=3 والباقي 2",f:"العدد المتبقي يسمى 'الباقي'"},
+{q:"قرأت سلمى 25 صفحة في 5 أيام بالتساوي، كم تقرأ يومياً؟",op:["3","5","10","20"],c:1,cat:"div",t:"مسائل قسمة كلامية",v:"exp",vd:"25÷5=?",f:"25÷5=5 صفحات"},
+{q:"إذا كان 72÷9=8 فإن 720÷9=",op:["8","80","800","8000"],c:1,cat:"div",t:"أنماط القسمة",v:"exp",vd:"72÷9=8 ← 720÷9=?",f:"720=72×10، إذن 720÷9=80"},
+{q:"أوجد 1600÷4",op:["40","400","4000","16"],c:1,cat:"div",t:"القسمة على مضاعفات 10",v:"exp",vd:"1600÷4=?",f:"16÷4=4، نضيف الصفرين =400"},
+{q:"أوجد 84÷4",op:["11","18","21","24"],c:2,cat:"div",t:"القسمة المطولة",v:"exp",vd:"84÷4=?",f:"84÷4=21"},
+{q:"قدر 424÷6",op:["7","17","70","700"],c:2,cat:"div",t:"تقدير القسمة",v:"exp",vd:"424≈420، 420÷6=?",f:"424≈420، 420÷6=70"},
+{q:"أوجد 83÷5",op:["16","17","16 والباقي 3","16 والباقي 36"],c:2,cat:"div",t:"القسمة مع باقي",v:"exp",vd:"83÷5=?",f:"83÷5=16 والباقي 3"},
+{q:"ثمن ثلاجة 3200 ريال، قسط على 8 شهور. القسط الشهري:",op:["320","350","400","500"],c:2,cat:"div",t:"مسائل كلامية",v:"exp",vd:"3200÷8=?",f:"3200÷8=400 ريال"},
+{q:"وزع محمد 15 قلماً على 3 مجموعات. نصيب كل مجموعة:",op:["3","4","5","6"],c:2,cat:"div",t:"مسائل كلامية",v:"exp",vd:"15÷3=?",f:"15÷3=5 أقلام"},
+{q:"أكمل: 8000÷▢=1000",op:["4","6","8","10"],c:2,cat:"div",t:"العلاقة بين الضرب والقسمة",v:"exp",vd:"8000÷?=1000",f:"8000÷8=1000"},
+{q:"ناتج 4500÷9=",op:["50","500","5000","5"],c:1,cat:"div",t:"أنماط القسمة",v:"exp",vd:"4500÷9=?",f:"45÷9=5، نضيف صفرين =500"},
+{q:"قدر 1612÷8",op:["20","200","2000","2"],c:1,cat:"div",t:"تقدير القسمة",v:"exp",vd:"1612≈1600، 1600÷8=?",f:"1612≈1600، 1600÷8=200"},
+{q:"اشترى نواف 4 شنط بـ216 ريال، ثمن الشنطة:",op:["40","50","54","64"],c:2,cat:"div",t:"مسائل كلامية",v:"exp",vd:"216÷4=?",f:"216÷4=54 ريال"},
+{q:"يقطع عداء 36كم في 3 ساعات، كم في الساعة؟",op:["14","13","12","11"],c:2,cat:"div",t:"مسائل كلامية",v:"exp",vd:"36÷3=?",f:"36÷3=12 كم"},
+{q:"عدد أوجه الهرم الرباعي:",op:["صفر","٢","٣","٤"],c:3,cat:"geo",t:"المجسمات",v:"pyr",f:"الهرم الرباعي له 4 أوجه مثلثة"},
+{q:"الشكل ثلاثي الأبعاد بدون أوجه ولا أحرف ولا رؤوس:",op:["الهرم","المخروط","الكرة","المكعب"],c:2,cat:"geo",t:"المجسمات",v:"sph",f:"الكرة ليس لها أوجه ولا أحرف ولا رؤوس"},
+{q:"أي الأشكال ليس مضلعاً؟",op:["مربع","دائرة","مثلث","خماسي"],c:1,cat:"geo",t:"المضلعات",v:"pol",f:"الدائرة شكل منحنٍ وليست مضلعاً"},
+{q:"الشكل ذو 6 أضلاع يسمى:",op:["رباعي","خماسي","سداسي","ثماني"],c:2,cat:"geo",t:"المضلعات",v:"hex",f:"المضلع السداسي له 6 أضلاع"},
+{q:"الزاوية 90° تسمى:",op:["حادة","قائمة","منفرجة","مستقيمة"],c:1,cat:"geo",t:"الزوايا",v:"ra",f:"الزاوية القائمة = 90°"},
+{q:"المجسم ذو وجه واحد ورأس واحد:",op:["أسطوانة","منشور","مخروط","كرة"],c:2,cat:"geo",t:"المجسمات",v:"cone",f:"المخروط له وجه دائري ورأس واحد"},
+{q:"المستقيمان المتعامدان يكونان زاوية:",op:["حادة","قائمة","منفرجة","مستقيمة"],c:1,cat:"geo",t:"المستقيمات",v:"perp",f:"المتعامدان يشكلان زاوية 90°"},
+{q:"الزاوية الأقل من 90° تسمى:",op:["حادة","قائمة","منفرجة","مستقيمة"],c:0,cat:"geo",t:"الزوايا",v:"acu",f:"الزاوية الحادة < 90°"},
+{q:"محيط مربع ضلعه 5سم:",op:["10سم","15سم","20سم","25سم"],c:2,cat:"meas",t:"المحيط",v:"sq",vd:"5",f:"المحيط=5×4=20سم"},
+{q:"مساحة مستطيل 6م×4م:",op:["10م²","20م²","24م²","28م²"],c:2,cat:"meas",t:"المساحة",v:"rect",vd:"6×4",f:"المساحة=6×4=24م²"},
+{q:"وحدة قياس المسافة بين المدن:",op:["ملم","سم","م","كلم"],c:3,cat:"meas",t:"وحدات الطول",v:"exp",vd:"المسافة بين المدن=?",f:"تقاس بالكيلومتر"},
+{q:"لوحة مربعة ضلعها 4م، محيطها:",op:["10م","12م","14م","16م"],c:3,cat:"meas",t:"المحيط",v:"sq",vd:"4",f:"المحيط=4×4=16م"},
+{q:"سجادة 4م×3م، مساحتها:",op:["7م²","12م²","14م²","16م²"],c:1,cat:"meas",t:"المساحة",v:"rect",vd:"4×3",f:"المساحة=4×3=12م²"},
+{q:"بدأت الحصة 10:30 واستمرت 45د، تنتهي:",op:["11:00","11:15","11:30","11:45"],c:1,cat:"meas",t:"الوقت",v:"clk",vd:"10:30+45",f:"10:30+45د=11:15"},
+{q:"الساعة 2:10 بعد ساعة و5د:",op:["3:10","3:15","4:10","4:15"],c:1,cat:"meas",t:"الوقت",v:"clk",vd:"2:10+1:05",f:"2:10+1:05=3:15"},
+{q:"الكسر المكافئ لـ 2/4:",op:["1/4","1/2","3/4","4/2"],c:1,cat:"frac",t:"الكسور المتكافئة",v:"feq",vd:{n1:2,d1:4,n2:1,d2:2},f:"2/4=1/2"},
+{q:"أوجد 2/6+3/6:",op:["5/6","5/12","6/12","1"],c:0,cat:"frac",t:"جمع الكسور",v:"exp",vd:"2/6+3/6=?",f:"المقام موحد:2+3=5، الناتج 5/6"},
+{q:"أوجد 6/7-4/7:",op:["1/7","2/7","3/7","10/7"],c:1,cat:"frac",t:"طرح الكسور",v:"exp",vd:"6/7-4/7=?",f:"6-4=2، الناتج 2/7"},
+{q:"1 و 1/4 ككسر غير فعلي:",op:["5/4","7/5","2/5","3/4"],c:0,cat:"frac",t:"الأعداد الكسرية",v:"exp",vd:"1 1/4=?/4",f:"1 و1/4=(4+1)/4=5/4"},
+{q:"3 أجزاء مظللة من 4 =",op:["1/4","2/4","3/4","4/4"],c:2,cat:"frac",t:"تمثيل الكسور",v:"fsh",vd:{sh:3,tot:4},f:"3 من 4=3/4"},
+{q:"المنوال للأعداد:30,32,30,28,30,31,29",op:["28","29","30","32"],c:2,cat:"stat",t:"المنوال",v:"exp",vd:"30 تكرر 3 مرات",f:"المنوال=30 (الأكثر تكراراً)"},
+{q:"وسيط:12,14,16,18,20",op:["12","14","16","18"],c:2,cat:"stat",t:"الوسيط",v:"exp",vd:"12,14,16,18,20",f:"الوسيط=16 (الأوسط)"},
+{q:"26÷2=13 (صح أم خطأ)",op:["صح","خطأ","",""],c:0,cat:"div",t:"صحة العبارات",v:"exp",vd:"26÷2=13",f:"صحيحة:26÷2=13"},
+{q:"12000÷4=30 (صح أم خطأ)",op:["صح","خطأ","",""],c:1,cat:"div",t:"صحة العبارات",v:"exp",vd:"12000÷4=?",f:"خطأ:12000÷4=3000"},
+{q:"الأعداد المتناغمة تساعد في تقدير القسمة (صح/خطأ)",op:["صح","خطأ","",""],c:0,cat:"div",t:"صحة العبارات",v:"exp",vd:"",f:"صحيحة"},
+{q:"المثلث ذو زاوية 90° حاد الزاوية (صح/خطأ)",op:["صح","خطأ","",""],c:1,cat:"geo",t:"صحة العبارات",v:"exp",vd:"",f:"خطأ:قائم الزاوية"},
+{q:"للمخروط رأس واحد ووجه واحد (صح/خطأ)",op:["صح","خطأ","",""],c:0,cat:"geo",t:"صحة العبارات",v:"exp",vd:"",f:"صحيحة"}
+];
+const TOT=15,TIM=30,MAXL=3,MAXS=1,SK='MQH',UK='MQU',NK='MQN';
+let sn='',cq=[],ci=0,sc=0,lv=MAXL,skl=MAXS,combo=0,ca=!0,ti=null,tr=TIM,ui=new Set(),wrCat={};
+function gH(){try{return JSON.parse(localStorage.getItem(SK))||[]}catch(e){return[]}}
+function sH(p,scv){let h=gH();h.push({name:sn,date:new Date().toLocaleDateString('ar-SA'),pct:p,score:scv,tot:TOT,ts:Date.now()});if(h.length>10)h=h.slice(-10);localStorage.setItem(SK,JSON.stringify(h))}
+function gB(){let h=gH();return h.length?Math.max(...h.map(x=>x.pct)):null}
+function clH(){if(confirm('مسح السجل؟')){localStorage.removeItem(SK);localStorage.removeItem(UK);dH();dWM()}}
+function gU(){try{return new Set(JSON.parse(localStorage.getItem(UK))||[])}catch(e){return new Set()}}
+function sU(){localStorage.setItem(UK,JSON.stringify([...ui]))}
+function dH(){let b=document.getElementById('hb'),c=document.getElementById('hc'),h=gH();if(!h.length){b.style.display='none';return}b.style.display='block';c.innerHTML=h.slice(-5).reverse().map(x=>`<div class="hr"><span><strong>${x.name||'طالب'}</strong></span><span>${x.date}</span><span>${x.score}/${x.tot}</span><span style="color:${x.pct>=70?'#27ae60':'#c0392b'};font-weight:800;">${x.pct}%</span></div>`).join('');let best=gB();if(best!==null)c.innerHTML+=`<div class="hr" style="background:#fff9e6;border-radius:6px;padding:6px;"><span>أفضل نتيجة</span><span class="bsh">${best}%</span></div>`}
+function dWM(){let ct=document.getElementById('wm'),h=gH();if(!h.length||!sn){ct.innerHTML='';return}let last=h[h.length-1],best=gB(),msg=`<strong>مرحباً ${sn}!</strong> `;if(last.pct>=90)msg+=`نتيجتك السابقة ${last.pct}% - ممتاز!`;else if(last.pct>=70)msg+=`نتيجتك السابقة ${last.pct}% - جيد!`;else if(last.pct>=50)msg+=`نتيجتك السابقة ${last.pct}% - تتحسن.`;else msg+=`نتيجتك السابقة ${last.pct}% - جرب مجدداً.`;if(best&&best>last.pct)msg+=`<br><small>أفضل نتيجة: ${best}%</small>`;ct.innerHTML=msg;ct.style.cssText='padding:10px;background:#f0f4f8;border-radius:8px;margin:10px 0;';}
+function selQ(){ui=gU();if(ui.size>=QB.length-TOT)ui=new Set();let av=QB.map((q,i)=>({q,i})).filter(x=>!ui.has(x.i));if(av.length<TOT){ui=new Set();av=QB.map((q,i)=>({q,i}))}let sh=[...av].sort(()=>Math.random()-0.5),sl=sh.slice(0,TOT);sl.forEach(x=>ui.add(x.i));sU();return sl.map(x=>x.q)}
+function vS(){let inp=document.getElementById('ni'),ne=document.getElementById('ne'),nm=inp.value.trim();if(!nm){ne.style.display='block';inp.style.borderColor='#c0392b';inp.focus();return}ne.style.display='none';inp.style.borderColor='#d5dbdb';sn=nm;localStorage.setItem(NK,sn);sQz()}
+function sQz(){if(!sn){let s=localStorage.getItem(NK);if(s)sn=s;else{document.getElementById('ni').focus();document.getElementById('ne').style.display='block';return}}cq=selQ();ci=0;sc=0;lv=MAXL;skl=MAXS;combo=0;wrCat={};ca=!0;document.getElementById("ss").style.display="none";document.getElementById("rs").style.display="none";document.getElementById("qs").style.display="block";document.getElementById("snd").textContent=sn;document.getElementById("skb").disabled=!1;document.getElementById("skl").textContent=`(${skl})`;let hts=document.getElementById('lv').getElementsByClassName('h');for(let h of hts)h.classList.remove('hl');uSc();sQ()}
+function gHm(){document.getElementById("qs").style.display="none";document.getElementById("rs").style.display="none";document.getElementById("ss").style.display="block";document.getElementById('ni').value=sn;dH();dWM()}
+function sQ(){ca=!0;document.getElementById("nb").style.display="none";document.getElementById("fb").style.display="none";document.getElementById("fb").className="fb";clearInterval(ti);sT();let qd=cq[ci];document.getElementById("pb").style.width=((ci/TOT)*100)+"%";document.getElementById("qn").innerText=`السؤال ${ci+1} من ${TOT}`;document.getElementById("qtl").innerText=qd.t||"";document.getElementById("qt").innerHTML=qd.q;document.getElementById("va").innerHTML=rV(qd.v,qd.vd);let og=document.getElementById("og");og.innerHTML="";const lt=['أ','ب','ج','د'];qd.op.forEach((o,i)=>{let cd=document.createElement("div");cd.className="oc";cd.innerHTML=`<span class="ol">${lt[i]}</span><span>${o}</span>`;cd.onclick=()=>chA(i,cd);og.appendChild(cd)})}
+function rV(vt,vd){if(!vt)return'';switch(vt){case'exp':return`<div class="me">${vd}</div>`;case'pyr':return`<svg width="120" height="100" viewBox="0 0 120 100"><polygon points="60,3 3,90 117,90" fill="#e8f0fe" stroke="#1a5276" stroke-width="3"/><line x1="60" y1="3" x2="60" y2="90" stroke="#1a5276" stroke-width="2" stroke-dasharray="4,2"/><text x="60" y="75" text-anchor="middle" font-size="12" fill="#1a5276" font-weight="bold">هرم</text></svg>`;case'sph':return`<svg width="80" height="80"><circle cx="40" cy="40" r="35" fill="#d6eaf8" stroke="#1a5276" stroke-width="3"/><text x="40" y="45" text-anchor="middle" font-size="12" fill="#1a5276" font-weight="bold">كرة</text></svg>`;case'pol':return`<div style="display:flex;gap:12px;"><svg width="45" height="45"><rect x="3" y="3" width="38" height="38" fill="#e8f0fe" stroke="#1a5276" stroke-width="2"/></svg><svg width="45" height="45"><circle cx="22" cy="22" r="18" fill="#fdedec" stroke="#c0392b" stroke-width="2"/></svg><svg width="45" height="45"><polygon points="22,3 42,38 2,38" fill="#e8f0fe" stroke="#1a5276" stroke-width="2"/></svg></div><small style="color:#c0392b;">الدائرة ليست مضلعاً</small>`;case'hex':return`<svg width="100" height="100" viewBox="0 0 100 100"><polygon points="50,3 95,28 95,72 50,97 5,72 5,28" fill="#e8f0fe" stroke="#1a5276" stroke-width="3"/><text x="50" y="55" text-anchor="middle" font-size="12" fill="#1a5276" font-weight="bold">سداسي</text></svg>`;case'ra':return`<svg width="80" height="80"><line x1="8" y1="72" x2="8" y2="8" stroke="#1a5276" stroke-width="4"/><line x1="8" y1="72" x2="72" y2="72" stroke="#1a5276" stroke-width="4"/><rect x="8" y="52" width="20" height="20" fill="#e74c3c" opacity="0.4"/><text x="45" y="78" font-size="10" fill="#555">90°</text></svg>`;case'cone':return`<svg width="80" height="80"><polygon points="40,3 5,68 75,68" fill="#e8f0fe" stroke="#1a5276" stroke-width="3"/><ellipse cx="40" cy="68" rx="35" ry="7" fill="#d6eaf8" stroke="#1a5276" stroke-width="2"/><text x="40" y="78" text-anchor="middle" font-size="9" fill="#555">مخروط</text></svg>`;case'perp':return`<svg width="90" height="80"><line x1="15" y1="70" x2="75" y2="70" stroke="#1a5276" stroke-width="3"/><line x1="45" y1="15" x2="45" y2="70" stroke="#1a5276" stroke-width="3"/><rect x="25" y="50" width="20" height="20" fill="#e74c3c" opacity="0.4"/><text x="65" y="65" font-size="9" fill="#555">90°</text></svg>`;case'acu':return`<svg width="80" height="80"><line x1="15" y1="70" x2="15" y2="15" stroke="#1a5276" stroke-width="4"/><line x1="15" y1="70" x2="60" y2="25" stroke="#1a5276" stroke-width="4"/><text x="35" y="55" font-size="10" fill="#c0392b" font-weight="bold">< 90°</text></svg>`;case'sq':return`<svg width="90" height="90"><rect x="5" y="5" width="80" height="80" fill="#e8f0fe" stroke="#1a5276" stroke-width="3"/><text x="45" y="48" text-anchor="middle" font-size="13" fill="#1a5276" font-weight="bold">${vd||'?'} سم</text></svg>`;case'rect':return`<svg width="140" height="90"><rect x="5" y="5" width="130" height="80" fill="#e8f0fe" stroke="#1a5276" stroke-width="3"/><text x="70" y="48" text-anchor="middle" font-size="13" fill="#1a5276" font-weight="bold">${vd||''}</text></svg>`;case'clk':return`<svg width="80" height="80"><circle cx="40" cy="40" r="36" fill="#fff" stroke="#1a5276" stroke-width="3"/><line x1="40" y1="40" x2="40" y2="12" stroke="#1a5276" stroke-width="3"/><line x1="40" y1="40" x2="55" y2="40" stroke="#1a5276" stroke-width="3"/><text x="40" y="70" text-anchor="middle" font-size="10" fill="#555">${vd||'?'}</text></svg>`;case'feq':return`<div style="display:flex;gap:12px;align-items:center;font-family:Cairo;font-size:20px;font-weight:900;color:#1a5276;"><span><span style="border-bottom:2px solid #1a5276;">${vd.n1}</span><br>${vd.d1}</span><span>=</span><span><span style="border-bottom:2px solid #1a5276;">${vd.n2}</span><br>${vd.d2}</span></div>`;case'fsh':let c='';for(let i=0;i<vd.tot;i++)c+=`<div style="width:35px;height:35px;border-radius:50%;border:2px solid #1a5276;background:${i<vd.sh?'#2980b9':'#fff'};display:inline-block;margin:2px;"></div>`;return`<div>${c}<br><small>${vd.sh}/${vd.tot}</small></div>`;default:return''}}
+function sT(){tr=TIM;uTD();let tc=document.getElementById('tc');tc.classList.remove('tw','td');ti=setInterval(()=>{tr--;uTD();if(tr<=10&&tr>5){tc.classList.add('tw');tc.classList.remove('td')}else if(tr<=5){tc.classList.remove('tw');tc.classList.add('td')}if(tr<=0){clearInterval(ti);hTO()}},1000)}
+function uTD(){document.getElementById('td').textContent=tr}
+function hTO(){if(!ca)return;ca=!1;combo=0;wrCat[cq[ci].cat]=(wrCat[cq[ci].cat]||0);let fb=document.getElementById('fb');fb.className='fb in';fb.innerHTML='انتهى الوقت.';fb.style.display='block';loL();document.getElementById('og').getElementsByClassName('oc')[cq[ci].c].classList.add('cr');document.getElementById('nb').style.display='inline-block'}
+function loL(){if(lv>0){lv--;let hts=document.getElementById('lv').getElementsByClassName('h');if(hts[lv])hts[lv].classList.add('hl');if(lv===0)setTimeout(()=>sR(),1500)}}
+function skQ(){if(skl<=0||!ca)return;skl--;document.getElementById('skl').textContent=skl>0?`(${skl})`:'(تم)';if(skl===0)document.getElementById('skb').disabled=!0;clearInterval(ti);combo=0;let fb=document.getElementById('fb');fb.className='fb in';fb.innerHTML='تم تخطي السؤال.';fb.style.display='block';document.getElementById('og').getElementsByClassName('oc')[cq[ci].c].classList.add('cr');ca=!1;document.getElementById('nb').style.display='inline-block'}
+function chA(si,se){if(!ca)return;ca=!1;clearInterval(ti);let qd=cq[ci],cds=document.getElementById('og').getElementsByClassName('oc'),fb=document.getElementById('fb');if(si===qd.c){se.classList.add("cr");sc++;combo++;wrCat[qd.cat]=(wrCat[qd.cat]||0)+1;uSc();if(combo>0&&combo%3===0){sc++;uSc();fb.className="fb cr";fb.innerHTML=`إجابة متقنة! ${qd.f}<br><small>(نجمة إضافية)</small>`}else{fb.className="fb cr";fb.innerHTML=`صحيح! ${qd.f}`}tC()}else{se.classList.add("wr");combo=0;wrCat[qd.cat]=(wrCat[qd.cat]||0);cds[qd.c].classList.add("cr");fb.className="fb wr";fb.innerHTML=`الإجابة: <strong>${qd.op[qd.c]}</strong><br><small>${qd.f}</small>`;loL()}fb.style.display="block";document.getElementById('nb').style.display="inline-block";if(lv===0)document.getElementById('nb').style.display="none"}
+function uSc(){document.getElementById('sv').textContent=sc}
+function nQ(){ci++;if(ci<TOT&&lv>0)sQ();else sR()}
+function analyzeWeakness(){let cats={div:'القسمة',geo:'الهندسة',meas:'القياس',frac:'الكسور',stat:'الإحصاء'},totalPerCat={},correctPerCat={};cq.forEach(q=>{totalPerCat[q.cat]=(totalPerCat[q.cat]||0)+1});for(let cat in wrCat)correctPerCat[cat]=wrCat[cat];let weakest={cat:null,pct:100};for(let cat in totalPerCat){let pct=((correctPerCat[cat]||0)/totalPerCat[cat])*100;if(pct<weakest.pct)weakest={cat,pct}}return{weakest,cats,totalPerCat,correctPerCat}}
+function getWeaknessAdvice(wc){let adv={div:{title:'أنت بحاجة إلى تقوية القسمة',tips:'• تدرب على جدول الضرب يومياً (5-10 دقائق)<br>• حل 5 مسائل قسمة يومياً<br>• استخدم الأنماط: 28÷7=4 ← 280÷7=40<br>• تدرب على القسمة مع باقي'},geo:{title:'أنت بحاجة إلى تقوية الهندسة',tips:'• ارسم الأشكال الهندسية وسمّها<br>• تعرف على المجسمات حولك (كرة، مكعب، مخروط)<br>• تدرب على تصنيف الزوايا (حادة، قائمة، منفرجة)<br>• ارسم مستقيمات متوازية ومتعامدة'},meas:{title:'أنت بحاجة إلى تقوية القياس',tips:'• تدرب على حساب المحيط: الطول+العرض+الطول+العرض<br>• تدرب على المساحة: الطول×العرض<br>• احفظ وحدات القياس: ملم، سم، م، كلم<br>• تدرب على قراءة الساعة وحساب الوقت'},frac:{title:'أنت بحاجة إلى تقوية الكسور',tips:'• تدرب على قراءة وكتابة الكسور<br>• ارسم دوائر وظللها لتمثيل الكسور<br>• تدرب على جمع وطرح الكسور المتشابهة<br>• تعلم الكسور المتكافئة: 2/4=1/2'},stat:{title:'أنت بحاجة إلى تقوية الإحصاء',tips:'• تدرب على إيجاد المنوال (الأكثر تكراراً)<br>• تدرب على ترتيب الأعداد وإيجاد الوسيط<br>• حل تمارين على قراءة البيانات'}};return adv[wc]||{title:'استمر في التدريب',tips:'• راجع جميع الدروس بانتظام<br>• حل تمارين متنوعة يومياً'}}
+function sR(){clearInterval(ti);document.getElementById("qs").style.display="none";document.getElementById("rs").style.display="block";let pct=Math.round((sc/TOT)*100);document.getElementById("fs").innerText=pct+"%";document.getElementById("rn").innerText=`الطالب: ${sn}`;sH(pct,sc);let tags=document.getElementById("atg");tags.innerHTML='';if(pct>=90)tags.innerHTML+='<span class="tg tp">متميز</span>';if(pct>=70)tags.innerHTML+='<span class="tg tgr">جيد جداً</span>';if(sc>=8)tags.innerHTML+='<span class="tg tgd">متفوق</span>';if(combo>=3)tags.innerHTML+='<span class="tg tco">إجابات متتالية</span>';if(lv===MAXL)tags.innerHTML+='<span class="tg tp">بدون أخطاء</span>';let ge=document.getElementById("rg"),me=document.getElementById("rm"),tb=document.getElementById("tb"),wb=document.getElementById("wb");if(pct>=90){ge.innerHTML='تقدير: <span class="ge">ممتاز</span>';me.innerText=`أحسنت يا ${sn}! أنت متمكن من الرياضيات.`;tb.style.display='none';wb.style.display='none'}else{let analysis=analyzeWeakness(),advice=getWeaknessAdvice(analysis.weakest.cat);if(pct>=70){ge.innerHTML='تقدير: <span class="gg">جيد جداً</span>';me.innerText=`نتيجة طيبة يا ${sn}!`}else if(pct>=50){ge.innerHTML='تقدير: <span class="gf">جيد</span>';me.innerText=`لا بأس يا ${sn}!`}else{ge.innerHTML='تقدير: <span class="gn">يحتاج تحسين</span>';me.innerText=`لا تقلق يا ${sn}!`}tb.style.display='block';tb.innerHTML=`<strong>📌 ${advice.title}</strong><br>${advice.tips}`;wb.style.display='block';wb.innerHTML=`<strong>📊 تحليل أدائك:</strong><br>`;let cats={div:'القسمة',geo:'الهندسة',meas:'القياس',frac:'الكسور',stat:'الإحصاء'};for(let cat in cats){let cp=analysis.totalPerCat[cat]?Math.round(((analysis.correctPerCat[cat]||0)/analysis.totalPerCat[cat])*100):0;wb.innerHTML+=`${cats[cat]}: ${cp}% ${cp<50?'⚠️':cp>=80?'✅':'🔶'}<br>`}}let bi=document.getElementById("bi"),best=gB();if(best!==null)bi.innerHTML=`أفضل نتيجة: <strong style="color:#f39c12;">${best}%</strong>`}
+function tC(){confetti({particleCount:60,spread:60,origin:{y:0.6},colors:['#2980b9','#27ae60','#f39c12','#e74c3c']})}
+document.addEventListener('DOMContentLoaded',function(){let s=localStorage.getItem(NK);if(s){sn=s;document.getElementById('ni').value=s}document.getElementById('ni').addEventListener('input',function(){document.getElementById('ne').style.display='none';this.style.borderColor='#d5dbdb'});dH();dWM()});
+</script>
+</body>
+</html>
